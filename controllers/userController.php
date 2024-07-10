@@ -1,4 +1,5 @@
 <?php
+require_once "models/userModel.php";
 // definition de la classe UserController
 class UserController{
     // attributs
@@ -14,7 +15,7 @@ class UserController{
         $this->lastName  = $la;
         $this->firstName = $fi;
         $this->email     = $em;
-        $this->password  = $pswd;
+        $this->password  = password_hash($pswd, PASSWORD_DEFAULT);
     }
 
     // definitions des getters et setters 
@@ -56,7 +57,13 @@ class UserController{
             echo "Veuillez remplir tout le formulaire!<br>";
         }else{
             // appel du model UserModel
+            UserModel::inscription($this->lastName, $this->firstName, $this->email, $this->password);
         }
+    }
+
+    // methode pour connecter le user
+    public static function login($email, $password){
+        UserModel::connexion($email, $password);
     }
 
 }
