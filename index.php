@@ -27,11 +27,21 @@ switch($url){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $email = $_POST['email'];
             $password = $_POST['mdp'];
-            // 
             UserController::login($email, $password);
         }else{
-            require_once "views/login.php";
+            // si l'utilisateur demande a afficher la page de connexion alors que il y a deja une session active il faut le rediriger vers le dashboard
+            if(isset($_SESSION["user_info"])){
+                require_once "views/dashboard.php";
+            }else{
+                require_once "views/login.php";
+            }
         }
+        break;
+    case "dashboard": # affichage du dashboard
+        require_once "views/dashboard.php";
+        break;
+    case "logout": # la deconnexion
+        UserController::logout();
         break;
     default:
         echo "404 cette page n'existe pas!";

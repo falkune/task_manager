@@ -30,21 +30,7 @@ class UserModel{
         // executer la requete
         $request->execute();
         // recuperer le resultat dans un tableau
-        $user = $request->fetch();
-        // si le tableau $user est vide (l'email n'existe pas dans la bd)
-        if(empty($user)){
-            $_SESSION['error_message'] = "Login ou mot de passe incorrect!";
-            header("Location: http://localhost/task_manager/?url=login");
-        }else{
-            if(password_verify($password, $user['password'])){
-                // tout ce passe bien donc on cree les sessions
-                unset($user['password']);
-                $_SESSION["user_info"] = $user;
-                header("Location: http://localhost/task_manager/?url=dashboard");
-            }else{
-                $_SESSION['error_message'] = "Login ou mot de passe incorrect!";
-                header("Location: http://localhost/task_manager/?url=login");
-            }
-        }
+        $user = $request->fetch(PDO::FETCH_ASSOC);
+        return $user;
     }
 }

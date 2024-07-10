@@ -5,6 +5,10 @@
 
     <div class="w-25 mx-auto mt-5">
         <form action="http://localhost/task_manager/?url=login" method="post">
+            <?php if(isset($_SESSION["error_message"])) { ?>
+                <p class="text-danger"> <?= $_SESSION["error_message"] ?> </p>
+            <?php } ?>
+
             <!-- l'Email -->
             <div class="mb-3">
                 <label class="form-label">Email</label>

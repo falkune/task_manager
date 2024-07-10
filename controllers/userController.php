@@ -58,12 +58,35 @@ class UserController{
         }else{
             // appel du model UserModel
             UserModel::inscription($this->lastName, $this->firstName, $this->email, $this->password);
+            header("Location: http://localhost/task_manager/?url=login");
         }
     }
 
     // methode pour connecter le user
     public static function login($email, $password){
-        UserModel::connexion($email, $password);
+        $user = UserModel::connexion($email, $password);
+        // si le tableau $user est vide (l'email n'existe pas dans la bd)
+        if(empty($user)){
+            $_SESSION['error_message'] = "Login ou mot de passe incorrect!";
+            header("Location: http://localhost/task_manager/?url=login");
+        }else{
+            if(password_verify($password, $user['password'])){
+                // tout ce passe bien donc on cree les sessions
+                unset($user['password']);
+                $_SESSION["user_info"] = $user;
+                unset($_SESSION['error_message']);
+                header("Location: http://localhost/task_manager/?url=dashboard");
+            }else{
+                $_SESSION['error_message'] = "Login ou mot de passe incorrect!";
+                header("Location: http://localhost/task_manager/?url=login");
+            }
+        }
+        
     }
 
+    // methode logout pour se deconnecter
+    public static function logout(){
+        session_destroy();
+        header("Location: http://localhost/task_manager/?url=login");
+    }
 }
