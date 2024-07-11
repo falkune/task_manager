@@ -44,4 +44,15 @@ class TaskModel{
         $request->execute(["expired", $taskId]);
         return true;
     }
+
+    // methode pour supprimer une tache de la table
+    public static function removeTask($taskId){
+        // etablir la connexion avec la bd
+        $dbConnect = DbConnexion::dbLog();
+        // preparer la requete
+        $request = $dbConnect->prepare("DELETE FROM tasks WHERE id = ?");
+        // executer la requete
+        $request->execute([$taskId]);
+        return true;
+    }
 }

@@ -19,4 +19,11 @@ class TaskController{
             header("Location: http://localhost/task_manager/?url=task_list");
         }
     }
+
+    // fonction pour supprimer une task
+    public static function deleteTask($taskId){
+        if(TaskModel::removeTask($taskId)){
+            header("Location: http://localhost/task_manager/?url=task_list");
+        }
+    }
 }

@@ -95,6 +95,25 @@ switch($url){
         $taskId = $_GET['task_id'];
         TaskController::endTask($taskId);
         break;
+    case "delete_task":
+        $taskId = $_GET['task_id'];
+        TaskController::deleteTask($taskId);
+        break;
+    case "update_task":
+        if(isset($_SESSION['user_info'])){
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $taskName = $_POST["nom"];
+                $taskDescription = $_POST["description"];
+                $taskDate = $_POST["date"];
+                $taskUserId = $_SESSION['user_info']['id'];
+                TaskController::addTask($taskName, $taskDescription, $taskDate, $taskUserId);
+            }else{
+                require_once "views/add_task.php";
+            }
+        }else{
+            header("Location: http://localhost/task_manager/?url=login");
+        }
+        break;
     default:
         echo "404 cette page n'existe pas!";
 }
