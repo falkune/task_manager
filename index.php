@@ -108,7 +108,9 @@ switch($url){
                 $taskUserId = $_SESSION['user_info']['id'];
                 TaskController::addTask($taskName, $taskDescription, $taskDate, $taskUserId);
             }else{
-                require_once "views/add_task.php";
+                $taskId = $_GET['task_id'];
+                $task = TaskController::getTaskInfos($taskId);
+                require_once "views/update_task.php";
             }
         }else{
             header("Location: http://localhost/task_manager/?url=login");

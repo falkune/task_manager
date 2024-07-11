@@ -26,4 +26,10 @@ class TaskController{
             header("Location: http://localhost/task_manager/?url=task_list");
         }
     }
+
+    // methode pour recuperer les infos d'une task
+    public static function getTaskInfos($taskId){
+        $taskInfos = TaskModel::getInfoTask($taskId);
+        return $taskInfos;
+    }
 }

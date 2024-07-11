@@ -55,4 +55,17 @@ class TaskModel{
         $request->execute([$taskId]);
         return true;
     }
+
+    // methode pour recuperer les informations d'une tache 
+    public static function getInfoTask($taskId){
+        // etablir la connexion avec la bd
+        $dbConnect = DbConnexion::dbLog();
+        // preparer la requete
+        $request = $dbConnect->prepare("SELECT * FROM tasks WHERE id = ?");
+        // executer la requete
+        $request->execute([$taskId]);
+        // recuperer le resultat dans un tableau
+        $tastInfos = $request->fetch();
+        return $tastInfos;
+    }
 }
