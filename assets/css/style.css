@@ -1,5 +1,69 @@
 body{
     margin: 0;
     padding: 0;
-    /* background-color: aqua; */
+    background-color: whitesmoke;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.mx-2{
+    padding: 0 25px;
+    width: 60px;
+}
+
+.sidebar{
+    width: 270px;
+}
+
+.main-login{
+    padding: 100px 0;
+}
+
+.login-form{
+    width: 450px;
+    height: 300px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.main-register{
+    padding: 70px 0;
+}
+
+.register-form{
+    width: 450px;
+    height: 500px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.in-up{
+    color: #386641;
+}
+
+.container-fluid{
+    padding: 0 50px;
+}
+
+.logout{
+    color: #bc4749;
+    font-size: large;
+    font-weight: 700;
+}
+
+.user-info{
+    font-size: large;
+    font-weight: 700;
+}
+
+.home{
+    font-size: x-large;
+    font-weight: 700;
+}
+
+.main{
+    height: 88%;
 }

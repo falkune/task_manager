@@ -89,4 +89,9 @@ class UserController{
         session_destroy();
         header("Location: http://localhost/task_manager/?url=login");
     }
+    // methode pour recupere la liste des utilisateurs
+    public static function getUserList(){
+        $list = UserModel::userlist();
+        return $list;
+    }
 }

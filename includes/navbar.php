@@ -14,9 +14,9 @@
 </head>
 <body>
     <!-- la nav bar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-secondary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand home" href="<?= BASE_URL ?>?url=dashboard">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -24,11 +24,21 @@
             
             <form class="d-flex " role="search">
                 <?php if(!isset($_SESSION["user_info"])) { ?>
-                    <a href="<?= BASE_URL ?>?url=register" class="btn">Sign up</a>
-                    <a href="<?= BASE_URL ?>?url=login" class="btn">Sign in</a>
+                    <a href="<?= BASE_URL ?>?url=register" class="btn m-2 in-up">
+                        <span class="m-1"><i class="fa-solid fa-user-plus"></i></span>
+                        <span class="m-1">Sign Up</span>
+                    </a>
+                    <a href="<?= BASE_URL ?>?url=login" class="btn m-2 in-up">
+                        <span class="m-1"><i class="fa-solid fa-right-to-bracket"></i></span>
+                        <span class="m-1">Sign In</span>
+                    </a>
                 <?php } else { ?>
-                    <a href="" class="btn"><?= $_SESSION["user_info"]['firstname']; ?></a>
-                    <a href="<?= BASE_URL ?>?url=logout" class="btn">Logout</a>
+                    <a class="mx-2 nav-link">
+                        <span class="m-1 user-info"><?= $_SESSION["user_info"]['firstname']; ?></span>
+                    </a>
+                    <a href="<?= BASE_URL ?>?url=logout" class="btn mx-2">
+                        <span class="logout"><i class="fa-solid fa-power-off"></i></span>
+                    </a>
                 <?php } ?>
             </form>
             </div>

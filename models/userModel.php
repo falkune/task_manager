@@ -33,4 +33,16 @@ class UserModel{
         $user = $request->fetch(PDO::FETCH_ASSOC);
         return $user;
     }
+
+    public static function userlist(){
+        // etablir la connexion avec la bd
+        $dbConnect = DbConnexion::dbLog();
+        // preparer la requete
+        $request = $dbConnect->prepare("SELECT * FROM users");
+        // executer la requete
+        $request->execute();
+        // recuperer le resultat dans un tableau
+        $user = $request->fetchAll(PDO::FETCH_ASSOC);
+        return $user;
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "controllers/userController.php";
+require_once "controllers/teamController.php";
 // $url = null;
 // if(isset($_GET['url'])){
 //     $url =  $_GET['url'];
@@ -38,10 +39,23 @@ switch($url){
         }
         break;
     case "dashboard": # affichage du dashboard
+        if(!isset($_SESSION["user_info"])){
+            header("Location: http://localhost/task_manager/?url=login");
+        }
         require_once "views/dashboard.php";
         break;
     case "logout": # la deconnexion
         UserController::logout();
+        break;
+    case "add_team":
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $teamName = $_POST['nom'];
+            $teamMembers = $_POST['members'];
+            TeamController::addTeam($teamName, $teamMembers);
+        }else{
+            $listUser = UserController::getUserList();
+            require_once "views/add_team.php";
+        }
         break;
     default:
         echo "404 cette page n'existe pas!";
