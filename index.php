@@ -57,6 +57,10 @@ switch($url){
             require_once "views/add_team.php";
         }
         break;
+    case "task_list":
+        require_once "views/task_list.php";
+        break;
+
     default:
         echo "404 cette page n'existe pas!";
 }

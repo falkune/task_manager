@@ -67,3 +67,19 @@ body{
 .main{
     height: 88%;
 }
+
+.add-team-form{
+    width: 500px;
+    min-height: 600px;
+    padding: 40px 20px;
+    border-radius: 10px;
+}
+
+.main-dashboard{
+    padding: 70px;
+    height: 100%;
+}
+
+.card-body{
+    height: 100px;
+}

@@ -22,8 +22,8 @@
                 </div>
 
                 <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" name="remember" for="exampleCheck1">Se rapeler de moi</label>
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember" value="remember me">
+                    <label class="form-check-label" for="exampleCheck1">Se rapeler de moi</label>
                 </div>
             
                 <button class="btn btn-success">Login</button>
