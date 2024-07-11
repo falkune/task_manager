@@ -2,6 +2,8 @@
 session_start();
 require_once "controllers/userController.php";
 require_once "controllers/teamController.php";
+require_once "controllers/taskController.php";
+
 // $url = null;
 // if(isset($_GET['url'])){
 //     $url =  $_GET['url'];
@@ -58,7 +60,13 @@ switch($url){
         }
         break;
     case "task_list":
-        require_once "views/task_list.php";
+        if(isset($_SESSION['user_info'])){
+            $idUser = $_SESSION['user_info']['id'];
+            $tasks = TaskController::getUserTaskList($idUser);
+            require_once "views/task_list.php";
+        }else{
+            header("Location: http://localhost/task_manager/?url=login");
+        }
         break;
 
     default:
