@@ -68,7 +68,20 @@ switch($url){
             header("Location: http://localhost/task_manager/?url=login");
         }
         break;
+    case "add_task":
+        if(isset($_SESSION['user_info'])){
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $taskName = $_POST["nom"];
+                $taskDescription = $_POST["description"];
+                $taskDate = $_POST["date"];
 
+            }else{
+                require_once "views/add_task.php";
+            }
+        }else{
+            header("Location: http://localhost/task_manager/?url=login");
+        }
+        break;
     default:
         echo "404 cette page n'existe pas!";
 }
