@@ -30,6 +30,14 @@ switch($url){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $email = $_POST['email'];
             $password = $_POST['mdp'];
+
+            if(isset($_POST['remember']) && $_POST['remember'] == "remember me"){
+                $exprireTime = time() + (2 * 24 * 60 * 60);
+                $domaine = "http://localhost/task_manager/";
+                setcookie("login", $email, $exprireTime, $domaine);
+                setcookie("mdp", $password, $exprireTime, $domaine);
+            }
+
             UserController::login($email, $password);
         }else{
             // si l'utilisateur demande a afficher la page de connexion alors que il y a deja une session active il faut le rediriger vers le dashboard

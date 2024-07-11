@@ -13,12 +13,12 @@
                 <!-- l'Email -->
                 <div class="mb-3">
                     <label class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control">
+                    <input type="email" name="email" class="form-control" value="<?= isset($_COOKIE['login']) ? $_COOKIE['login'] : ''; ?>">
                 </div>
                 <!-- Mot de passe -->
                 <div class="mb-3">
                     <label class="form-label">Mot de passe</label>
-                    <input type="password" name="mdp" class="form-control">
+                    <input type="password" name="mdp" class="form-control" value="<?= isset($_COOKIE['mdp']) ? $_COOKIE['mdp'] : ''; ?>">
                 </div>
 
                 <div class="mb-3 form-check">
