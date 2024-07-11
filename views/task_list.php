@@ -24,10 +24,24 @@
                             <tr>
                                 <td><?= $task['task_name'] ?></td>
                                 <td><?= $task['description'] ?></td>
-                                <td><?= $task['ende_date'] ?></td>
-                                <td><?= $task['status'] ?></td>
+                                <td><?= $task['end_date'] ?></td>
+                                <td><?= $task['statut'] ?></td>
                                 <td>
-                                    les actions
+                                    <button type="button" class="btn btn-success mx-2">
+                                        <a class="nav-link" href="http://localhost/task_manager/?url=end_task&task_id=<?= $task['id'] ?>">
+                                            <i class="fa-solid fa-check"></i>
+                                        </a>
+                                    </button>
+                                    <button type="button" class="btn btn-warning mx-2">
+                                        <a class="nav-link" href="http://localhost/task_manager/?url=update_task&task_id=<?= $task['id'] ?>">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger mx-2">
+                                        <a class="nav-link" href="http://localhost/task_manager/?url=delete_task&task_id=<?= $task['id'] ?>">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                    </button>
                                 </td>
                             </tr>
                         <?php } ?>

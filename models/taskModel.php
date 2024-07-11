@@ -15,12 +15,12 @@ class TaskModel{
     }
 
     // methode pour sauvegarder une tache dans la bd
-    public static function saveTask($takName, $taskDescription, $taskDate,$taskUserId){
+    public static function saveTask($taskName, $taskDescription, $taskDate, $taskUserId){
         // etablir la connexion avec la bd
         $dbConnect = DbConnexion::dbLog();
         // preparer la requete
-        $request = $dbConnect->prepare("INSERT INTO tasks (task_name, description, end_date, id_user) VALUES (:nom, :task_description, :task_date, :user)");
-        $request->bindParam(':task_name', $takName);
+        $request = $dbConnect->prepare("INSERT INTO tasks (task_name, description, end_date, user_id) VALUES (:nom, :task_description, :task_date, :user)");
+        $request->bindParam(':nom', $taskName);
         $request->bindParam(':task_description', $taskDescription);
         $request->bindParam(':task_date', $taskDate);
         $request->bindParam(':user', $taskUserId);
@@ -28,6 +28,20 @@ class TaskModel{
         // executer la requete
         $request->execute();
 
+        return true;
+    }
+
+    // methode pour marquer une task comme terminee
+    public static function markTaskEnd($taskId){
+        // etablir la connexion avec la bd
+        $dbConnect = DbConnexion::dbLog();
+        // preparer la requete
+        $request = $dbConnect->prepare("UPDATE tasks SET statut = ? WHERE id = ?");
+        // $request->bindParam(':statut_value', "expired");
+        // $request->bindParam(':task_id', $taskId);
+
+        // executer la requete
+        $request->execute(["expired", $taskId]);
         return true;
     }
 }

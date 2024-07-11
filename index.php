@@ -74,13 +74,18 @@ switch($url){
                 $taskName = $_POST["nom"];
                 $taskDescription = $_POST["description"];
                 $taskDate = $_POST["date"];
-
+                $taskUserId = $_SESSION['user_info']['id'];
+                TaskController::addTask($taskName, $taskDescription, $taskDate, $taskUserId);
             }else{
                 require_once "views/add_task.php";
             }
         }else{
             header("Location: http://localhost/task_manager/?url=login");
         }
+        break;
+    case "end_task":
+        $taskId = $_GET['task_id'];
+        TaskController::endTask($taskId);
         break;
     default:
         echo "404 cette page n'existe pas!";

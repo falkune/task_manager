@@ -18,7 +18,7 @@
 
                 <div class="mb-3">
                     <label class="fform-label" for="exampleCheck1">End Date</label>
-                    <input type="datetime-local" class="form-control" id="exampleCheck1" name="date">
+                    <input type="date" class="form-control" id="exampleCheck1" name="date">
                 </div>
             
                 <button class="btn btn-success">Login</button>
