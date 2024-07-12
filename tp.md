@@ -11,3 +11,6 @@ faire en sorte que le clic sur le lien Mes Tâches produit comme resultat l'affi
 faire en sorte que le clic sur le bouton Ajouter une Tache affiche la page add_task.php (à creer) image suivante.
 <img src="./assets/imgs/2.png"/>
 le clic sur le bouton Ajouter du formulaire qui permet d'ajouter une tache permet d'enregistrer le nom de la tache, la description, la date de fin, l'identifiant de l'utilisateur proprietaire de la tache (notez que c'est l'identifiant de l'utilisateur actuelement connecté pensez a le recuperer dans la session)
+
+
+php -S localhost:8888
